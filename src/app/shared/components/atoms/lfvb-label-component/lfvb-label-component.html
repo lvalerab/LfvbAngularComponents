@@ -1,0 +1,26 @@
+@if(tipoVisualizacion=='angular-material') {
+    <mat-label [className]="class" [style]="style">
+        @if(classIcon!=null || svgIcon!=null || icon!=null) {
+            <lfvbIcon [isFont]="true" [icon]="icon??''"></lfvbIcon>        
+        }
+        &nbsp;{{valor()}}
+    </mat-label>
+}
+
+@if(tipoVisualizacion=='zorro') {
+    <label [className]="class" [style]="style">
+        @if(classIcon!=null || svgIcon!=null || icon!=null) {
+            <lfvbIcon [isFont]="true" [icon]="icon??''"></lfvbIcon>        
+        }
+        &nbsp;{{valor()}}
+    </label>
+}
+
+@if(tipoVisualizacion=='HTML') {
+    <label [className]="class" [style]="style">
+        @if(classIcon!=null || svgIcon!=null || icon!=null) {
+            <lfvbIcon [isFont]="true" [icon]="icon??''"></lfvbIcon>        
+        }
+        &nbsp;{{valor()}}
+    </label>
+}

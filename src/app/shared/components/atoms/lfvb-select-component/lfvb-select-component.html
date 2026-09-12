@@ -1,0 +1,56 @@
+@if(tipoVisualizacion=='angular-material') {
+    <mat-select [(ngModel)]="valor" (valueChange)="OnCuandoCambiaValor($event)" [className]="class" [style]="style" [multiple]="multiple">
+            @if(groupLabelValue && opcGroupLabelValue) {
+                @for(grp of opciones(); track grp) {
+                    <mat-optgroup [label]="grp[groupLabelValue]">
+                        @for(opc of grp[opcGroupLabelValue]; track opc) {
+                            <mat-option [value]="opc">{{labelValue?opc[labelValue]:opc}}</mat-option>
+                        }
+                    </mat-optgroup>
+                }
+            }
+            @else {
+                @for(opt of opciones(); track opt) {
+                    <mat-option [value]="opt">{{labelValue?opt[labelValue]:opt}}</mat-option>
+                }
+            }
+    </mat-select>
+}
+
+@if(tipoVisualizacion=='zorro') {
+   <nz-select [(ngModel)]="valor" (ngModelChange)="OnCuandoCambiaValor($event)" [nzMode]="multiple?'multiple':'default'">
+        @if(groupLabelValue && opcGroupLabelValue) {
+            @for(grp of opciones(); track grp) {
+                <nz-option-group [nzLabel]="grp[groupLabelValue]">
+                    @for(opc of grp[opcGroupLabelValue]; track opc) {
+                        <nz-option [nzValue]="opc" [nzLabel]="labelValue?opc[labelValue]:opc"></nz-option>
+                    }
+                </nz-option-group>
+            }
+        }
+        @else {
+            @for(opt of opciones(); track opt) {
+                <mat-option [value]="opt">{{labelValue?opt[labelValue]:opt}}</mat-option>
+            }
+        }
+   </nz-select>
+}
+
+@if(tipoVisualizacion=='HTML') {
+    <select [(ngModel)]="valor" (valueChange)="OnCuandoCambiaValor($event)" [className]="class" [style]="style" [multiple]="multiple">
+        @if(groupLabelValue && opcGroupLabelValue) {
+            @for(grp of opciones(); track grp) {
+                <optgroup [label]="grp[groupLabelValue]">
+                    @for(opc of grp[opcGroupLabelValue]; track opc) {
+                        <option [value]="opc">{{labelValue?opc[labelValue]:opc}}</option>
+                    }
+                </optgroup>
+            }
+        }
+        @else {
+            @for(opt of opciones(); track opt) {
+                <option [value]="opt">{{labelValue?opt[labelValue]:opt}}</option>
+            }
+        }
+   </select>
+}

@@ -1,0 +1,52 @@
+@if(tipoVisualizacion=='angular-material') {
+    @if(link) {
+        <a [matButton]="tipo" [href]="href" [target]="target" (click)="OnCuandoHaceClick($event)">{{label}}</a>
+    }
+    @else {
+        @if(!icon) {
+            <button [matButton]="tipo" (click)="OnCuandoHaceClick($event)">{{label}}</button>
+        } 
+        @else {
+            @if(!floating && !MiniFAB && !ExtendedFAB) {            
+                <button matIconButton (click)="OnCuandoHaceClick($event)" [aria-label]="label"><mat-icon>{{icon}}</mat-icon></button>
+            } 
+            @else {
+                @if(floating) {
+                    <button matFab (click)="OnCuandoHaceClick($event)" [aria-label]="label"><mat-icon>{{icon}}</mat-icon></button>
+                }
+                @else {
+                    @if(MiniFAB) {
+                        <button matMiniFab (click)="OnCuandoHaceClick($event)" [aria-label]="label"><mat-icon>{{icon}}</mat-icon></button>
+                    }
+                    @else {
+                        //Por defecto es extender
+                        <button matFab extended (click)="OnCuandoHaceClick($event)" [aria-label]="label"><mat-icon>{{icon}}</mat-icon></button>
+                    }
+                }
+            }
+        }
+    }    
+}
+
+@if(tipoVisualizacion=='zorro') {
+    @if(icon) {
+        <button nz-button [nzType]="nzTipo??'default'" [nzShape]="nzForma" [nzSize]="nzTamanyo??'default'" (click)="OnCuandoHaceClick($event)"><lfvbIcon [icon]="icon??''"></lfvbIcon>{{label}}</button>
+    } 
+    @else { 
+        <button nz-button [nzType]="nzTipo??'default'" [nzShape]="nzForma" [nzSize]="nzTamanyo??'default'" (click)="OnCuandoHaceClick($event)">{{label}}</button>
+    }
+}
+
+@if(tipoVisualizacion=='HTML') {
+    @if(link) {
+        <a [href]="href" [target]="target" (click)="OnCuandoHaceClick($event)">{{label}}</a>
+    }
+    @else {
+        @if(!icon) {
+            <button (click)="OnCuandoHaceClick($event)">{{label}}</button>
+        } 
+        @else {
+            <button (click)="OnCuandoHaceClick($event)" [aria-label]="label"><mat-icon>{{icon}}</mat-icon></button>
+        }
+    }
+}

@@ -1,0 +1,37 @@
+@if(tipoVisualizacion=='angular-material') {
+    @if(icon()) {
+        @if(isFont) {
+            <mat-icon [aria-hidden]="oculto" [aria-label]="label" [fontIcon]="icon()??''"></mat-icon>
+        } 
+        @else {
+            @if(isSvg) {
+                <mat-icon [aria-hidden]="oculto" [aria-label]="label" [svgIcon]="icon()??''"></mat-icon>
+            }
+            @else {
+                <mat-icon [aria-hidden]="oculto" [aria-label]="label">{{icon()??''}}</mat-icon>
+            }
+        }
+    }
+}
+
+@if(tipoVisualizacion=='zorro') {
+    @if(icon()) {
+        <nz-icon [nzType]="icon()"></nz-icon>       
+    }
+}
+
+@if(tipoVisualizacion=='HTML') {
+    @if(icon()) {
+        @if(isFont) {
+            <span [aria-hidden]="oculto" [aria-label]="label" class="'icon fontIcon_'+(icon()??'')"></span>
+        } 
+        @else {
+            @if(isSvg) {
+                <span [aria-hidden]="oculto" [aria-label]="label" class="'icon svgIcon_'+(icon()??'')"></span>
+            }
+            @else {
+                <span [aria-hidden]="oculto" [aria-label]="label" class="'icon Icon_'+(icon()??'')"></span>
+            }
+        }
+    }
+}

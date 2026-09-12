@@ -1,0 +1,17 @@
+@if(tipoVisualizacion=='angular-material') {
+    <mat-form-field [className]="classContainer" [style]="styleContainer">
+        <!--<mat-label [className]="classLabel" [style]="styleLabel">{{label}}</mat-label>-->
+        <lfvbLabel [valor]="label??''" [class]="classLabel" [style]="styleLabel"></lfvbLabel>
+        <input matInput [type]="tipo??'text'" [className]="classInput" [style]="styleLabel" [(ngModel)]="valor" [placeholder]="placeholder??''">
+    </mat-form-field>
+}
+
+@if(tipoVisualizacion=='zorro') {
+    <lfvbLabel [valor]="label??''" [class]="classLabel" [style]="styleLabel" [tipoVisualizacion]="tipoVisualizacion"></lfvbLabel>
+    <input nz-input [type]="tipo??'text'" [className]="classInput" [style]="styleLabel" [(ngModel)]="valor" [placeholder]="placeholder??''">
+}
+
+@if(tipoVisualizacion=='HTML') {
+    <lfvbLabel [valor]="label??''" [class]="classLabel" [style]="styleLabel" [tipoVisualizacion]="tipoVisualizacion"></lfvbLabel>
+    <input [type]="tipo??'text'" [className]="classInput" [style]="styleLabel" [(ngModel)]="valor" [placeholder]="placeholder??''">
+}

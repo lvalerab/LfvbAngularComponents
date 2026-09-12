@@ -3,10 +3,24 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
+import { provideHttpClient, withInterceptorsFromDi, withInterceptors } from '@angular/common/http';
+
+import { httpInterceptorProviders } from './shared/interceptor/index';
+import { es_ES, provideNzI18n } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import es from '@angular/common/locales/es';
+import { provideNzDateFnsAdapter } from 'ng-zorro-antd/core/time';
+
+registerLocaleData(es);
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes), provideClientHydration()
-  ]
+    provideRouter(routes),
+    provideClientHydration(),
+    provideHttpClient(withInterceptorsFromDi(), withInterceptors([])),
+    httpInterceptorProviders,
+    provideNzI18n(es_ES),
+    provideNzDateFnsAdapter(),
+  ],
 };
