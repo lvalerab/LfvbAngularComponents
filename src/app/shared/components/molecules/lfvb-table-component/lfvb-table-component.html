@@ -1,0 +1,52 @@
+@if(tipoVisualizacion=='zorro') {
+    <nz-table #tablaNz [nzData]="dataSource()">
+        <thead>
+            <tr>
+                <ng-container [ngTemplateOutlet]="headerRowTemplate">
+
+                </ng-container>
+            </tr>
+        </thead>
+        <tbody>
+            @for(row of tablaNz.data; track $index) {
+                <tr>
+                    <ng-container [ngTemplateOutlet]="rowTemplate" [ngTemplateOutletContext]="{row:row}">
+
+                    </ng-container>
+                </tr>
+            }
+        </tbody>
+    </nz-table>
+}
+@else if(tipoVisualizacion=='angular-material') {
+    <table mat-table [dataSource]="dataSource()">
+        @for(rd of definitionColumns; track $index) {
+            <ng-container [matColumnDef]="rd.valorColumna">
+                <th mat-header-cell *matHeaderCellDef>{{rd.nombreColumna}}</th>
+                <td mat-cell *matCellDef="let element">{{element[rd.valorColumna]}}</td>
+            </ng-container>
+        }
+        <tr mat-header-row *matHeaderRowDef="definitionColumns.map(x=>x.valorColumna)"></tr>
+        <tr mat-row *matRowDef="let row; columns: definitionColumns.map(x=>x.valorColumna);"></tr>
+    </table>
+}
+@else {
+    <table [width]="'100%'">
+       <thead>
+            <tr>
+                <ng-container [ngTemplateOutlet]="headerRowTemplate">
+
+                </ng-container>
+            </tr>
+        </thead>
+        <tbody>
+            @for(row of dataSource(); track $index) {
+                <tr>
+                    <ng-container [ngTemplateOutlet]="rowTemplate" [ngTemplateOutletContext]="{row:row}">
+
+                    </ng-container>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

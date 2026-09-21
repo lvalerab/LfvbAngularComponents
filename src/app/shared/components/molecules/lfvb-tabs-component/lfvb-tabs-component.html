@@ -1,0 +1,55 @@
+@if(tipoVisualizacion=='zorro') {
+    <!--Visualizacion en modo zorro-->
+    <nz-tabs>
+        @for(tab of tabs; track $index) {
+            @if(tab.headerTemplate) {
+                <nz-tab [nzTitle]="titleTemplate">
+                    <ng-template #titleTemplate>
+                        <ng-container [ngTemplateOutlet]="tab.headerTemplate"></ng-container>
+                    </ng-template>                    
+                    <ng-container [ngTemplateOutlet]="tab.tabContainer"></ng-container>
+                </nz-tab>
+            }
+            @else {
+                <nz-tab [nzTitle]="tab.label">                    
+                    <ng-container [ngTemplateOutlet]="tab.tabContainer"></ng-container>
+                </nz-tab>
+            }
+        }
+    </nz-tabs>
+}
+@else if (tipoVisualizacion=='angular-material') {
+    <!--Visualizacion en modo material-->
+    <mat-tab-group>
+        @for(tab of tabs; track $index) {
+            <mat-tab [label]="tab.label">
+                @if(tab.headerTemplate) {
+                    <ng-template mat-tab-label>
+                        <ng-container [ngTemplateOutlet]="tab.headerTemplate"></ng-container>
+                    </ng-template>
+                }
+                <ng-container [ngTemplateOutlet]="tab.tabContainer"></ng-container>
+            </mat-tab>
+        }
+    </mat-tab-group>
+}
+@else {
+    <!--Visualizacion en modo html-->
+    <div>
+        @for(tab of tabs; track $index) {
+            <div (click)="selectTab(tab)" style="display:inline;inline-size: auto; border-top-left-radius: 15%; border-color: black; border-width: 1px; border-style:solid; padding: 5px;" [style.background-color]="selectedTab?.tabId==tab.tabId?'#00000055':'#FFFFFF'">
+                @if(tab.headerTemplate) {
+                    <ng-container [ngTemplateOutlet]="tab.headerTemplate"></ng-container>
+                }
+                @else {
+                    <label>{{tab.label}}</label>
+                }
+            </div>
+        }        
+        @for(tab of tabs; track $index) {
+            <div [style.display]="selectedTab?.tabId==tab.tabId?'block':'none'">
+                <ng-container [ngTemplateOutlet]="tab.tabContainer"></ng-container>
+            </div>
+        }
+    </div>
+}

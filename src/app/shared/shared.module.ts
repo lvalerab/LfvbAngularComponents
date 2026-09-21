@@ -7,18 +7,24 @@ import { LfvbButtonComponent } from './components/atoms/lfvb-button-component/lf
 import { LfvbIconComponent } from './components/atoms/lfvb-icon-component/lfvb-icon-component';
 import { LfvbSelectComponent } from './components/atoms/lfvb-select-component/lfvb-select-component';
 import { LfvbAvatarComponent } from './components/atoms/lfvb-avatar-component/lfvb-avatar-component';
+import { LfvbTabComponent } from './components/molecules/lfvb-tabs-component/atoms/lfvb-tab-component/lfvb-tab-component';
+import { LfvbTabsComponent } from './components/molecules/lfvb-tabs-component/lfvb-tabs-component';
+import { LfvbTableComponent } from './components/molecules/lfvb-table-component/lfvb-table-component';
 
 
 @NgModule({
   declarations: [],
   imports: [    
-    CommonModule,
+    CommonModule,    
     LfvbAvatarComponent,
     LfvbInputComponent,
     LfvbLabelComponent,
     LfvbButtonComponent,
     LfvbIconComponent,
-    LfvbSelectComponent
+    LfvbSelectComponent,
+    LfvbTabComponent,
+    LfvbTabsComponent,
+    LfvbTableComponent
   ],
   exports:[
     LfvbAvatarComponent,
@@ -26,7 +32,10 @@ import { LfvbAvatarComponent } from './components/atoms/lfvb-avatar-component/lf
     LfvbLabelComponent,
     LfvbButtonComponent,
     LfvbIconComponent,
-    LfvbSelectComponent
+    LfvbSelectComponent,
+    LfvbTabComponent,
+    LfvbTabsComponent,
+    LfvbTableComponent
   ]
 })
 export class SharedModule { }

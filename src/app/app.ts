@@ -67,4 +67,11 @@ export class App {
     }
   ];
 
+
+  dataSource=[
+    {Id:1,Nombre:"Valor fila 1",Descripcion:"Esto es un valor de una fila"},
+    {Id:2,Nombre:"Valor fila 2",Descripcion:"Esto es un valor de una fila P"},
+    {Id:3,Nombre:"Valor fila 3",Descripcion:"Esto es un valor de una fila Z"},
+    {Id:4,Nombre:"Valor fila 4",Descripcion:"Esto es un valor de una fila Y"},
+  ]
 }

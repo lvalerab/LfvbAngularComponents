@@ -4,3 +4,41 @@ Ha escrito: <lfvbLabel [(valor)]="texto"></lfvbLabel><br/>
 <lfvbButton [label]="'Pruebame'" nzTipo="primary" nzForma="round" nzTamanyo="small"></lfvbButton><br/>
 <lfvbSelect [opciones]="selectValores" groupLabelValue="label" opcGroupLabelValue="opciones" labelValue="label" [multiple]="true"></lfvbSelect><br/>
 <lfvbAvatar [(texto)]="texto"></lfvbAvatar>
+<br/>
+<br/>
+<lfvbTabs>
+    <lfvbTab label="Tab1" tabId="1">
+        <ng-template #tituloTabTemplate>
+            <b>Esto es un template del titulo</b>
+        </ng-template>
+        <ng-template #tabContainer>
+            Contenido del tab 1
+        </ng-template>
+    </lfvbTab>
+    <lfvbTab label="Tab2" tabId="2">
+        <ng-template #tabContainer>
+            Contenido del tab 2
+        </ng-template>
+    </lfvbTab>
+    <lfvbTab label="Contenido con tabla" tabId="3">
+        <ng-template #tabContainer>
+            <lfvbTable [(dataSource)]="dataSource" [definitionColumns]="[
+                {'nombreColumna':'Id','valorColumna':'Id'},
+                {'nombreColumna':'Nombre','valorColumna':'Nombre'},
+                {'nombreColumna':'Descripcion','valorColumna':'Descripcion'}
+            ]">
+                <ng-template #headerRowTemplate>
+                    <th>Id.</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                </ng-template>
+                <ng-template #rowTemplate let-row="row">
+                    <td>{{row.Id}}</td>
+                    <td>{{row.Nombre}}</td>
+                    <td>{{row.Descripcion}}</td>
+                </ng-template>                
+            </lfvbTable>            
+        </ng-template>
+    </lfvbTab>
+</lfvbTabs>
+<br>
