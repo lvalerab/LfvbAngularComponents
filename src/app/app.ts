@@ -6,6 +6,8 @@ import { optionSelectEntity, groupSelectEntity } from './data/mocks/select/optio
 import { AppRoutingModule } from './app.routes';
 import { LfvbAvatarComponent } from './shared/components/atoms/lfvb-avatar-component/lfvb-avatar-component';
 
+
+
 @Component({
   selector: 'app-root',
   imports: [

@@ -1,9 +1,29 @@
 <router-outlet></router-outlet>
-<lfvbInput [(valor)]="texto" label="Valor del texto" placeholder="Escriba un texto para ver la variación..."></lfvbInput><br/>
-Ha escrito: <lfvbLabel [(valor)]="texto"></lfvbLabel><br/>
-<lfvbButton [label]="'Pruebame'" nzTipo="primary" nzForma="round" nzTamanyo="small"></lfvbButton><br/>
-<lfvbSelect [opciones]="selectValores" groupLabelValue="label" opcGroupLabelValue="opciones" labelValue="label" [multiple]="true"></lfvbSelect><br/>
-<lfvbAvatar [(texto)]="texto"></lfvbAvatar>
+<lfvbForm>
+    <lfvbFormItem [inline]="true" width="50%">
+        <ng-template #labelItemTemplate>
+            Ha escrito: <lfvbLabel [(valor)]="texto"></lfvbLabel>
+        </ng-template>
+        <ng-template #itemTemplate>
+            <lfvbInput [(valor)]="texto" label="Valor del texto" placeholder="Escriba un texto para ver la variación..."></lfvbInput>
+        </ng-template>
+    </lfvbFormItem>
+    <lfvbFormItem [inline]="true" width="50%">
+        <ng-template #itemTemplate>
+            <lfvbButton [label]="'Pruebame'" nzTipo="primary" nzForma="round" nzTamanyo="small"></lfvbButton><br/>
+        </ng-template>
+    </lfvbFormItem>
+    <lfvbFormItem [inline]="true" width="100%">
+        <ng-template #itemTemplate>
+            <lfvbSelect [opciones]="selectValores" groupLabelValue="label" opcGroupLabelValue="opciones" labelValue="label" [multiple]="true"></lfvbSelect>
+        </ng-template>
+    </lfvbFormItem>
+    <lfvbFormItem [inline]="true" width="100%">
+        <ng-template #itemTemplate>
+            <lfvbAvatar [(texto)]="texto"></lfvbAvatar>
+        </ng-template>
+    </lfvbFormItem>
+</lfvbForm>
 <br/>
 <br/>
 <lfvbTabs>
@@ -42,3 +62,30 @@ Ha escrito: <lfvbLabel [(valor)]="texto"></lfvbLabel><br/>
     </lfvbTab>
 </lfvbTabs>
 <br>
+<lfvbCard [width]="'250px'" [inline]="true">
+    <ng-template #headerCardTemplate>
+        <h2>Titulo card 1</h2>
+    </ng-template>
+    <ng-template #contentCardTemplate>
+        Esto es el contenido de la card 1
+    </ng-template>
+    <ng-template #footerCardTemplate>
+        Esto es el pie
+    </ng-template>
+</lfvbCard>
+<lfvbCard [width]="'150px'" [inline]="true">
+    <ng-template #headerCardTemplate>
+        <h2>Titulo card 2</h2>
+    </ng-template>
+    <ng-template #contentCardTemplate>
+        Esto es el contenido de la card 2
+    </ng-template>
+</lfvbCard>
+<lfvbCard [width]="'150px'">
+    <ng-template #headerCardTemplate>
+        <h2>Titulo card 3</h2>
+    </ng-template>
+    <ng-template #contentCardTemplate>
+        Esto es el contenido de la card 3
+    </ng-template>
+</lfvbCard>

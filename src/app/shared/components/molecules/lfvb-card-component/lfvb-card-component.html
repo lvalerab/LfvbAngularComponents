@@ -1,0 +1,100 @@
+@if(tipoVisualizacion=='zorro') {
+    <nz-card [style.width]="width" [style.display]="inline?'inline-block':'block'" [nzCover]="cvrTmp" [nzActions]="[actTmp]">
+         @if(contentCardTemplate) {
+            <ng-container [ngTemplateOutlet]="contentCardTemplate">
+
+            </ng-container>
+        }
+        <ng-template #cvrTmp>
+             @if(imagenCardTemplate) {
+                <ng-container [ngTemplateOutlet]="imagenCardTemplate">
+
+                </ng-container>            
+            }
+            @else if (srcImgCard) {
+                <img mat-card-image [src]="srcImgCard" [alt]="txtImgCard">
+            }
+        </ng-template>
+        <ng-template #actTmp>
+            @if(menuCardTemplate) {
+                <ng-container [ngTemplateOutlet]="menuCardTemplate">
+
+                </ng-container>
+            }
+        </ng-template>
+    </nz-card>
+}
+@else if(tipoVisualizacion=='angular-material') {
+    <mat-card appearance="outlined" [style.display]="inline?'inline-block':'block'" [style.inline-size]="width">
+        <mat-card-header>
+            <ng-container [ngTemplateOutlet]="headerCardTemplate">
+
+            </ng-container>            
+        </mat-card-header>
+        @if(imagenCardTemplate) {
+            <ng-container [ngTemplateOutlet]="imagenCardTemplate">
+
+            </ng-container>            
+        }
+        @else if (srcImgCard) {
+            <img mat-card-image [src]="srcImgCard" [alt]="txtImgCard">
+        }
+        @if(contentCardTemplate) {
+            <mat-card-content>
+                <ng-container [ngTemplateOutlet]="contentCardTemplate">
+
+                </ng-container>
+            </mat-card-content>
+        }
+        @if(menuCardTemplate) {
+            <mat-card-actions>
+                <ng-container [ngTemplateOutlet]="menuCardTemplate">
+
+                </ng-container>
+            </mat-card-actions>
+        }
+        @if(footerCardTemplate) {
+            <mat-card-footer>
+                <ng-container [ngTemplateOutlet]="footerCardTemplate">
+
+                </ng-container>
+            </mat-card-footer>
+        }
+    </mat-card>
+}
+@else {
+    <div [style.display]="inline?'inline-block':'block'" style="padding: 5px 5px 5px 5px; margin-left: 2%;margin-right: 2%;border-radius: 15px; border-color: black; border-style:solid ;border-width: 1px;" [style.inline-size]="width">
+        @if(headerCardTemplate) {
+            <div style="border-bottom-color: black;border-bottom-style: dotted; border-bottom-width: 1px;">
+                <ng-container [ngTemplateOutlet]="headerCardTemplate">
+
+                </ng-container>            
+            </div>      
+        }
+         @if(imagenCardTemplate) {
+            <ng-container [ngTemplateOutlet]="imagenCardTemplate">
+
+            </ng-container>            
+        }
+        @else if (srcImgCard) {
+            <img [src]="srcImgCard" [alt]="txtImgCard">
+        }  
+        @if(contentCardTemplate) {
+            <ng-container [ngTemplateOutlet]="contentCardTemplate">
+
+            </ng-container>
+        }
+        @if(menuCardTemplate) {
+            <ng-container [ngTemplateOutlet]="menuCardTemplate">
+
+            </ng-container>
+        }
+        @if(footerCardTemplate) {
+            <div style="border-top-color: black;border-top-style: dotted; border-top-width: 1px;">
+                <ng-container [ngTemplateOutlet]="footerCardTemplate">
+
+                </ng-container>
+            </div>
+        }
+    </div>
+}

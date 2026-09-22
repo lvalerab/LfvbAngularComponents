@@ -10,6 +10,9 @@ import { LfvbAvatarComponent } from './components/atoms/lfvb-avatar-component/lf
 import { LfvbTabComponent } from './components/molecules/lfvb-tabs-component/atoms/lfvb-tab-component/lfvb-tab-component';
 import { LfvbTabsComponent } from './components/molecules/lfvb-tabs-component/lfvb-tabs-component';
 import { LfvbTableComponent } from './components/molecules/lfvb-table-component/lfvb-table-component';
+import { LfvbCardComponent } from './components/molecules/lfvb-card-component/lfvb-card-component';
+import { LfvbFormComponent } from './components/molecules/lfvb-form-component/lfvb-form-component';
+import { LfvbFormItemComponent } from './components/molecules/lfvb-form-component/atoms/lfvb-form-item-component/lfvb-form-item-component';
 
 
 @NgModule({
@@ -24,7 +27,10 @@ import { LfvbTableComponent } from './components/molecules/lfvb-table-component/
     LfvbSelectComponent,
     LfvbTabComponent,
     LfvbTabsComponent,
-    LfvbTableComponent
+    LfvbTableComponent,
+    LfvbCardComponent, 
+    LfvbFormComponent,
+    LfvbFormItemComponent
   ],
   exports:[
     LfvbAvatarComponent,
@@ -35,7 +41,10 @@ import { LfvbTableComponent } from './components/molecules/lfvb-table-component/
     LfvbSelectComponent,
     LfvbTabComponent,
     LfvbTabsComponent,
-    LfvbTableComponent
+    LfvbTableComponent,
+    LfvbCardComponent,
+    LfvbFormComponent,
+    LfvbFormItemComponent
   ]
 })
 export class SharedModule { }

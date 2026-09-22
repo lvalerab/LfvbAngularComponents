@@ -1,0 +1,42 @@
+@if(tipoVisualizacion=='zorro') {
+    <form nz-form (submit)="EmitirSubmit($event)">
+         @for(itm of items;track $index) {
+             <nz-form-item [style.display]="itm.inline?'inline-block':'block'" [style.width]="itm.width">
+                <ng-container [ngTemplateOutlet]="itm.labelItemTemplate">
+
+                </ng-container>
+                <ng-container [ngTemplateOutlet]="itm.itemTemplate">
+
+                </ng-container>
+            </nz-form-item>
+        }
+    </form>
+}
+@else if(tipoVisualizacion=='angular-material') {
+    <form (submit)="EmitirSubmit($event)">
+        @for(itm of items;track $index) {
+            <div [style.display]="itm.inline?'inline-block':'block'" [style.width]="itm.width">                
+                <ng-container [ngTemplateOutlet]="itm.labelItemTemplate">
+
+                </ng-container>
+                <ng-container [ngTemplateOutlet]="itm.itemTemplate">
+
+                </ng-container>
+            </div>
+        }
+    </form>
+}
+@else {
+    <form (submit)="EmitirSubmit($event)">
+        @for(itm of items;track $index) {
+            <div [style.display]="itm.inline?'inline-block':'block'" [style.width]="itm.width">
+                <ng-container [ngTemplateOutlet]="itm.labelItemTemplate">
+
+                </ng-container>
+                <ng-container [ngTemplateOutlet]="itm.itemTemplate">
+
+                </ng-container>
+            </div>
+        }
+    </form>
+}
