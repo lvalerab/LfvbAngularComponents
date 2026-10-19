@@ -8,4 +8,5 @@ export enum TamanyoAvatar {
 
 export enum TipoFiguraAvatar {
     cuadrado,
+    redondo
 }

@@ -79,25 +79,25 @@ export class App {
 
   menu:MenuItemModel[]=[
     {
-      label:'Menu de usuario',
+      label:'Stock',
       icon:null,
       action:null,      
       routerLink:null,
       items:[
         {
-          label:"Submenu 0-0",
+          label:"Almacenes",
           icon:null,
           action:null,
           items:[
             {
-              label:'Submenu 0-0-0',
+              label:'Nuevo almacen',
               icon:null,
               action:null,      
               routerLink:null,
               items:null
             },
             {
-              label:'Submenu 0-0-1',
+              label:'Gestión almacen',
               icon:null,
               action:null,      
               routerLink:null,
@@ -107,14 +107,14 @@ export class App {
           routerLink:null
         },
         {
-          label:"Submenu 0-1",
+          label:"Pedidos",
           icon:null,
           action:null,
           items:null,
           routerLink:null
         },
         {
-          label:"Submenu 0-2",
+          label:"Proveedores",
           icon:null,
           action:null,
           items:null,
@@ -123,37 +123,97 @@ export class App {
       ]
     },
     {
-      label:'Aplicaciones de usuario',
+      label:'Facturación',
       icon:null,
       action:null,
       items:null,
       routerLink:null
+    },    
+    {
+      label:"ERP",
+      icon:null,
+      action:null,
+      items:[
+        {
+          label:"Gestión de personas",
+          icon:null,
+          action:null,
+          items:null,
+          routerLink:null,
+        }, 
+        {
+          label:"Comunicaciones",
+          icon:null,
+          action:null,
+          items:null,
+          routerLink:null,
+        },
+        {
+          label:"Peticiones",
+          icon:null,
+          action:null,
+          items:null,
+          routerLink:null,
+        },
+      ],
+      routerLink:null,
     },
     {
-      label:'Aplicaciones de usuario',
+      label:'Configuración',
       icon:null,
       action:null,
       routerLink:null,
       items:[
         {
-          label:"Submenu 3-0",
+          label:"Textos e idiomas",
           icon:null,
           action:null,
-          items:null,
+          items:[
+            {
+              label:"Composiciones",
+              icon:null,
+              action:null,
+              items:null,
+              routerLink:null,
+            }, 
+          ],
           routerLink:null,
         },
         {
-          label:"Submenu 3-1",
+          label:"Gestión de usuarios y grupos",
           icon:null,
           action:null,
-          items:null,
+          items:[
+            {
+              label:"Usuarios",
+              icon:null,
+              action:null,
+              items:null,
+              routerLink:null,
+            }, 
+            {
+              label:"Grupos",
+              icon:null,
+              action:null,
+              items:null,
+              routerLink:null,
+            } 
+          ],
           routerLink:null,
         },
         {
-          label:"Submenu 3-2",
+          label:"Aplicaciones y módulos",
           icon:null,
           action:null,
-          items:null,
+          items:[
+            {
+              label:"Mantenimiento de aplicaciones",
+              icon:null,
+              action:null,
+              items:null,
+              routerLink:null,
+            }
+          ],
           routerLink:null
         },
       ]
