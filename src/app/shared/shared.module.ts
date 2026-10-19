@@ -13,6 +13,8 @@ import { LfvbTableComponent } from './components/molecules/lfvb-table-component/
 import { LfvbCardComponent } from './components/molecules/lfvb-card-component/lfvb-card-component';
 import { LfvbFormComponent } from './components/molecules/lfvb-form-component/lfvb-form-component';
 import { LfvbFormItemComponent } from './components/molecules/lfvb-form-component/atoms/lfvb-form-item-component/lfvb-form-item-component';
+import { LfvbMenuItemComponent } from './components/molecules/lfvb-menu-component/atoms/lfvb-menu-item-component/lfvb-menu-item-component';
+import { LfvbMenuComponent } from './components/molecules/lfvb-menu-component/lfvb-menu-component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { LfvbFormItemComponent } from './components/molecules/lfvb-form-componen
     LfvbTableComponent,
     LfvbCardComponent, 
     LfvbFormComponent,
-    LfvbFormItemComponent
+    LfvbFormItemComponent,
+    LfvbMenuItemComponent,
+    LfvbMenuComponent
   ],
   exports:[
     LfvbAvatarComponent,
@@ -44,7 +48,9 @@ import { LfvbFormItemComponent } from './components/molecules/lfvb-form-componen
     LfvbTableComponent,
     LfvbCardComponent,
     LfvbFormComponent,
-    LfvbFormItemComponent
+    LfvbFormItemComponent,
+    LfvbMenuItemComponent,
+    LfvbMenuComponent
   ]
 })
 export class SharedModule { }

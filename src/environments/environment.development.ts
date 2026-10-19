@@ -291,9 +291,9 @@ export const environment = {
     ,
     config:{
         sdkVisualizador:{
-            //tipo:'HTML'
+            tipo:'HTML'
             //tipo:'zorro'
-            tipo:'angular-material'
+            //tipo:'angular-material'
         },
         login:{
             interactivo:{
