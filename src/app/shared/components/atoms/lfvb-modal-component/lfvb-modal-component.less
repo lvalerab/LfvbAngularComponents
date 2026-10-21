@@ -1,0 +1,64 @@
+dialog {
+  border: none;
+  border-radius: 8px;
+  padding: 0;
+  width: 100%;
+  //max-width: 500px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+/* Fondo oscuro nativo */
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-header-success {
+  background-color: rgba(0, 254, 0, 0.8);
+  color: gray;
+}
+
+.modal-header-warm {
+  background-color: rgba(246, 190, 0, 0.8);
+  color: gray;
+}
+
+.modal-header-err {
+  background-color: rgba(246, 0, 0, 0.8);
+  color: gray;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-footer {
+  padding: 0.5rem;  
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { environment } from '@environments/environment';
 import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
 import { LfvbIconComponent } from "../lfvb-icon-component/lfvb-icon-component";
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'lfvbButton',
@@ -63,12 +64,13 @@ export class LfvbButtonComponent {
   target:string|null=null;
 
 
-
+  @Output()
+  onClic=new EventEmitter<MouseEvent>();
 
 
 
   OnCuandoHaceClick(evento:MouseEvent) {
-
+    this.onClic.emit(evento);
   }
 
 }

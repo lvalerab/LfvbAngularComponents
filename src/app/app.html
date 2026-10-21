@@ -7,6 +7,19 @@
             <lfvbAvatar [(texto)]="texto"></lfvbAvatar>        
     </ng-template>
 </lfvbMenu>
+<lfvbModal [title]="'Titulo del modal'" [(isOpen)]="abrirModal" [isError]="esError" [isWarm]="esWarm" [isSuccess]="esOk">
+    <!--<ng-template #headerModalTemplate>
+        <h1>Titulo del modal</h1>
+    </ng-template>-->
+    <ng-template #contentModalTemplate>
+        Esto es el cuerpo del modal
+    </ng-template>
+    <ng-template #footerModalTemplate>
+        <div style="right: 0%;">
+            <lfvbButton (onClic)="onCloseModal({boton:true})" [label]="'Cerrar'"></lfvbButton>
+        </div>
+    </ng-template>
+</lfvbModal>
 <lfvbTabs>
     <lfvbTab label="Tab1" tabId="1">
         <ng-template #tituloTabTemplate>
@@ -24,7 +37,11 @@
                 </lfvbFormItem>
                 <lfvbFormItem [inline]="true" width="50%">
                     <ng-template #itemTemplate>
-                        <lfvbButton [label]="'Pruebame'" nzTipo="primary" nzForma="round" nzTamanyo="small"></lfvbButton><br/>
+                        <lfvbLabel [valor]="'Pinche para ver el modal'"></lfvbLabel><br/>
+                        <lfvbButton [label]="'Error'" nzTipo="primary" nzForma="round" nzTamanyo="small" (onClic)="FuncionAbrirModal(true,false,false)"></lfvbButton><br/>
+                        <lfvbButton [label]="'Warning'" nzTipo="primary" nzForma="round" nzTamanyo="small" (onClic)="FuncionAbrirModal(false,true,false)"></lfvbButton><br/>
+                        <lfvbButton [label]="'Success'" nzTipo="primary" nzForma="round" nzTamanyo="small" (onClic)="FuncionAbrirModal(false,false,true)"></lfvbButton><br/>
+                        <lfvbButton [label]="'Normal'" nzTipo="primary" nzForma="round" nzTamanyo="small" (onClic)="FuncionAbrirModal(false,false,false)"></lfvbButton><br/>
                     </ng-template>
                 </lfvbFormItem>
                 <lfvbFormItem [inline]="true" width="100%">

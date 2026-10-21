@@ -4,23 +4,23 @@
     }
     @else {
         @if(!icon) {
-            <button [matButton]="tipo" (click)="OnCuandoHaceClick($event)">{{label}}</button>
+            <button type="button" [matButton]="tipo" (click)="OnCuandoHaceClick($event)">{{label}}</button>
         } 
         @else {
             @if(!floating && !MiniFAB && !ExtendedFAB) {            
-                <button matIconButton (click)="OnCuandoHaceClick($event)" [aria-label]="label"><mat-icon>{{icon}}</mat-icon></button>
+                <button type="button" matIconButton (click)="OnCuandoHaceClick($event)" [aria-label]="label"><mat-icon>{{icon}}</mat-icon></button>
             } 
             @else {
                 @if(floating) {
-                    <button matFab (click)="OnCuandoHaceClick($event)" [aria-label]="label"><mat-icon>{{icon}}</mat-icon></button>
+                    <button type="button" matFab (click)="OnCuandoHaceClick($event)" [aria-label]="label"><mat-icon>{{icon}}</mat-icon></button>
                 }
                 @else {
                     @if(MiniFAB) {
-                        <button matMiniFab (click)="OnCuandoHaceClick($event)" [aria-label]="label"><mat-icon>{{icon}}</mat-icon></button>
+                        <button type="button" matMiniFab (click)="OnCuandoHaceClick($event)" [aria-label]="label"><mat-icon>{{icon}}</mat-icon></button>
                     }
                     @else {
                         //Por defecto es extender
-                        <button matFab extended (click)="OnCuandoHaceClick($event)" [aria-label]="label"><mat-icon>{{icon}}</mat-icon></button>
+                        <button type="button" matFab extended (click)="OnCuandoHaceClick($event)" [aria-label]="label"><mat-icon>{{icon}}</mat-icon></button>
                     }
                 }
             }
@@ -30,10 +30,10 @@
 
 @if(tipoVisualizacion=='zorro') {
     @if(icon) {
-        <button nz-button [nzType]="nzTipo??'default'" [nzShape]="nzForma" [nzSize]="nzTamanyo??'default'" (click)="OnCuandoHaceClick($event)"><lfvbIcon [icon]="icon??''"></lfvbIcon>{{label}}</button>
+        <button nz-button [nzType]="nzTipo??'default'" [nzShape]="nzForma" [nzSize]="nzTamanyo??'default'" type="button" (click)="OnCuandoHaceClick($event)"><lfvbIcon [icon]="icon??''"></lfvbIcon>{{label}}</button>
     } 
     @else { 
-        <button nz-button [nzType]="nzTipo??'default'" [nzShape]="nzForma" [nzSize]="nzTamanyo??'default'" (click)="OnCuandoHaceClick($event)">{{label}}</button>
+        <button nz-button [nzType]="nzTipo??'default'" [nzShape]="nzForma" [nzSize]="nzTamanyo??'default'" type="button" (click)="OnCuandoHaceClick($event)">{{label}}</button>
     }
 }
 
@@ -43,10 +43,10 @@
     }
     @else {
         @if(!icon) {
-            <button (click)="OnCuandoHaceClick($event)">{{label}}</button>
+            <button (click)="OnCuandoHaceClick($event)" type="button">{{label}}</button>
         } 
         @else {
-            <button (click)="OnCuandoHaceClick($event)" [aria-label]="label"><mat-icon>{{icon}}</mat-icon></button>
+            <button (click)="OnCuandoHaceClick($event)" [aria-label]="label" type="button"><mat-icon>{{icon}}</mat-icon></button>
         }
     }
 }

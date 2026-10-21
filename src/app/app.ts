@@ -9,6 +9,7 @@ import { MenuItemModel } from './shared/components/molecules/lfvb-menu-component
 
 
 
+
 @Component({
   selector: 'app-root',
   imports: [
@@ -23,6 +24,22 @@ export class App {
   protected readonly title = signal('frontend');
 
   texto:string="Hola caracola";
+
+  abrirModal:boolean=false;
+  esError:boolean=false;
+  esWarm:boolean=false;
+  esOk:boolean=false;
+
+  FuncionAbrirModal(esError:boolean, esWarm:boolean, esOk:boolean) {
+    this.esError=esError;
+    this.esWarm=esWarm;
+    this.esOk=esOk;
+    this.abrirModal=true;
+  }
+
+  onCloseModal(data:any) {    
+    this.abrirModal=false;
+  }
 
   selectValores:groupSelectEntity[]=[
     {
