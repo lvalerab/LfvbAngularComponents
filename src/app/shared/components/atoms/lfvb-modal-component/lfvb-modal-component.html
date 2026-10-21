@@ -1,29 +1,28 @@
 @if(tipoVisualizacion=='zorro') {
-    <nz-modal [(nzVisible)]="isOpen" [nzTitle]="title" (nzOnCancel)="onClose(null)" (nzOnOk)="onClose({ok:true})" (nzOnCancel)="{ok:false}">
+    <nz-modal [(nzVisible)]="isOpen" [nzTitle]="title" [nzContent]="modalContent" [nzFooter]="modalFooter" (nzOnCancel)="onClose(null)" (nzOnOk)="onClose({ok:true})" (nzOnCancel)="{ok:false}">
         @if(headerModalTemplate) {
-            <<ng-container *nzModalTitle>
+            <<ng-template #modalTitle>
                 <ng-container [ngTemplateOutlet]="headerModalTemplate">
 
                 </ng-container>
-            </ng-container>
+            </ng-template>
         }
-        <ng-container *nzModalContent>
+        <ng-template #modalContent>
              <ng-container [ngTemplateOutlet]="contentModalTemplate">
 
             </ng-container>
-        </ng-container>
-        @if(footerModalTemplate) {
-            <div *nzModalFooter>
+        </ng-template>
+        <ng-template #modalFooter>
+            @if(footerModalTemplate) {            
                 <ng-container [ngTemplateOutlet]="footerModalTemplate">
 
                 </ng-container>
-            </div>
-        }
-        @else {
-            <div *nzModalFooter>
+            }
+            @else {
                 <lfvbButton (click)="onClose(null)" label="Cerrar"></lfvbButton>
-            </div>
-        }
+                
+            }
+        </ng-template>
     </nz-modal>
 }
 @else if(tipoVisualizacion=='HTML' || tipoVisualizacion=='angular-material') {

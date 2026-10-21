@@ -26,6 +26,7 @@ export class App {
   texto:string="Hola caracola";
 
   abrirModal:boolean=false;
+  abrirModal2:boolean=false;
   esError:boolean=false;
   esWarm:boolean=false;
   esOk:boolean=false;
@@ -35,6 +36,10 @@ export class App {
     this.esWarm=esWarm;
     this.esOk=esOk;
     this.abrirModal=true;
+  }
+
+  FuncionAbrirModal2(esError:boolean, esWarm:boolean, esOk:boolean) {    
+    this.abrirModal2=true;
   }
 
   onCloseModal(data:any) {    

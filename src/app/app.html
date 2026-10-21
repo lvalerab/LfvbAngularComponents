@@ -7,17 +7,44 @@
             <lfvbAvatar [(texto)]="texto"></lfvbAvatar>        
     </ng-template>
 </lfvbMenu>
-<lfvbModal [title]="'Titulo del modal'" [(isOpen)]="abrirModal" [isError]="esError" [isWarm]="esWarm" [isSuccess]="esOk">
+<lfvbModal [title]="'Titulo del modal'" [(isOpen)]="abrirModal" [isError]="esError" [isWarm]="esWarm" [isSuccess]="esOk" [ancho]="'60rem'">
     <!--<ng-template #headerModalTemplate>
         <h1>Titulo del modal</h1>
     </ng-template>-->
     <ng-template #contentModalTemplate>
-        Esto es el cuerpo del modal
+        <lfvbTabs>
+            <lfvbTab label="Tab1" tabId="1">
+                <ng-template #tituloTabTemplate>
+                    <b>Tab 1 dentro de modal</b>
+                </ng-template>
+                <ng-template #tabContainer>
+                    Esto es un tab dentro del modal
+                </ng-template>
+            </lfvbTab>
+            <lfvbTab label="Cards" tabId="2">
+                <ng-template #tituloTabTemplate>
+                    <b>Tab 2 dentro de modal</b>
+                </ng-template>
+                <ng-template #tabContainer>
+                    Esto es un tab dentro del modal (2)
+                </ng-template>
+            </lfvbTab>
+            <lfvbTab label="Contenido con tabla" tabId="3">
+                 <ng-template #tituloTabTemplate>
+                    <b>Tab 3 dentro de modal</b>
+                </ng-template>
+                <ng-template #tabContainer>
+                    Esto es un tab dentro del modal (3)
+
+                    Intento de llamar a otro dialogo
+                    
+                </ng-template>                     
+            </lfvbTab>
+        </lfvbTabs>
     </ng-template>
-    <ng-template #footerModalTemplate>
-        <div style="right: 0%;">
-            <lfvbButton (onClic)="onCloseModal({boton:true})" [label]="'Cerrar'"></lfvbButton>
-        </div>
+    <ng-template #footerModalTemplate>        
+        <lfvbButton (onClic)="onCloseModal({boton:true, aceptar:true})" [label]="'Aceptar'" [className]="'modal-footer-btn-accept'"></lfvbButton>
+        <lfvbButton (onClic)="onCloseModal({boton:true, aceptar:false})" [label]="'Cerrar'" [className]="'modal-footer-btn-err'"></lfvbButton>
     </ng-template>
 </lfvbModal>
 <lfvbTabs>
@@ -35,6 +62,23 @@
                         <lfvbInput [(valor)]="texto" label="Valor del texto" placeholder="Escriba un texto para ver la variación..."></lfvbInput>
                     </ng-template>
                 </lfvbFormItem>
+                <lfvbFormItem [inline]="true" width="100%">
+                    <ng-template #labelTemplate>
+                        Multiselect
+                    </ng-template>
+                    <ng-template #itemTemplate>
+                        <lfvbSelect [opciones]="selectValores" groupLabelValue="label" opcGroupLabelValue="opciones" labelValue="label" [multiple]="true"></lfvbSelect>
+                    </ng-template>
+                </lfvbFormItem>    
+            </lfvbForm>
+        </ng-template>
+    </lfvbTab>
+    <lfvbTab label="Modales" tabId="4">
+        <ng-template #tituloTabTemplate>
+            <b>Tipos de modales y mensajes</b>
+        </ng-template>
+        <ng-template #tabContainer>
+            <lfvbForm>
                 <lfvbFormItem [inline]="true" width="50%">
                     <ng-template #itemTemplate>
                         <lfvbLabel [valor]="'Pinche para ver el modal'"></lfvbLabel><br/>
@@ -44,11 +88,6 @@
                         <lfvbButton [label]="'Normal'" nzTipo="primary" nzForma="round" nzTamanyo="small" (onClic)="FuncionAbrirModal(false,false,false)"></lfvbButton><br/>
                     </ng-template>
                 </lfvbFormItem>
-                <lfvbFormItem [inline]="true" width="100%">
-                    <ng-template #itemTemplate>
-                        <lfvbSelect [opciones]="selectValores" groupLabelValue="label" opcGroupLabelValue="opciones" labelValue="label" [multiple]="true"></lfvbSelect>
-                    </ng-template>
-                </lfvbFormItem>    
             </lfvbForm>
         </ng-template>
     </lfvbTab>
