@@ -9,6 +9,7 @@ import { MenuItemModel } from './shared/components/molecules/lfvb-menu-component
 
 
 
+
 @Component({
   selector: 'app-root',
   imports: [
@@ -23,6 +24,27 @@ export class App {
   protected readonly title = signal('frontend');
 
   texto:string="Hola caracola";
+
+  abrirModal:boolean=false;
+  abrirModal2:boolean=false;
+  esError:boolean=false;
+  esWarm:boolean=false;
+  esOk:boolean=false;
+
+  FuncionAbrirModal(esError:boolean, esWarm:boolean, esOk:boolean) {
+    this.esError=esError;
+    this.esWarm=esWarm;
+    this.esOk=esOk;
+    this.abrirModal=true;
+  }
+
+  FuncionAbrirModal2(esError:boolean, esWarm:boolean, esOk:boolean) {    
+    this.abrirModal2=true;
+  }
+
+  onCloseModal(data:any) {    
+    this.abrirModal=false;
+  }
 
   selectValores:groupSelectEntity[]=[
     {
@@ -79,25 +101,25 @@ export class App {
 
   menu:MenuItemModel[]=[
     {
-      label:'Menu de usuario',
+      label:'Stock',
       icon:null,
       action:null,      
       routerLink:null,
       items:[
         {
-          label:"Submenu 0-0",
+          label:"Almacenes",
           icon:null,
           action:null,
           items:[
             {
-              label:'Submenu 0-0-0',
+              label:'Nuevo almacen',
               icon:null,
               action:null,      
               routerLink:null,
               items:null
             },
             {
-              label:'Submenu 0-0-1',
+              label:'Gestión almacen',
               icon:null,
               action:null,      
               routerLink:null,
@@ -107,14 +129,14 @@ export class App {
           routerLink:null
         },
         {
-          label:"Submenu 0-1",
+          label:"Pedidos",
           icon:null,
           action:null,
           items:null,
           routerLink:null
         },
         {
-          label:"Submenu 0-2",
+          label:"Proveedores",
           icon:null,
           action:null,
           items:null,
@@ -123,37 +145,97 @@ export class App {
       ]
     },
     {
-      label:'Aplicaciones de usuario',
+      label:'Facturación',
       icon:null,
       action:null,
       items:null,
       routerLink:null
+    },    
+    {
+      label:"ERP",
+      icon:null,
+      action:null,
+      items:[
+        {
+          label:"Gestión de personas",
+          icon:null,
+          action:null,
+          items:null,
+          routerLink:null,
+        }, 
+        {
+          label:"Comunicaciones",
+          icon:null,
+          action:null,
+          items:null,
+          routerLink:null,
+        },
+        {
+          label:"Peticiones",
+          icon:null,
+          action:null,
+          items:null,
+          routerLink:null,
+        },
+      ],
+      routerLink:null,
     },
     {
-      label:'Aplicaciones de usuario',
+      label:'Configuración',
       icon:null,
       action:null,
       routerLink:null,
       items:[
         {
-          label:"Submenu 3-0",
+          label:"Textos e idiomas",
           icon:null,
           action:null,
-          items:null,
+          items:[
+            {
+              label:"Composiciones",
+              icon:null,
+              action:null,
+              items:null,
+              routerLink:null,
+            }, 
+          ],
           routerLink:null,
         },
         {
-          label:"Submenu 3-1",
+          label:"Gestión de usuarios y grupos",
           icon:null,
           action:null,
-          items:null,
+          items:[
+            {
+              label:"Usuarios",
+              icon:null,
+              action:null,
+              items:null,
+              routerLink:null,
+            }, 
+            {
+              label:"Grupos",
+              icon:null,
+              action:null,
+              items:null,
+              routerLink:null,
+            } 
+          ],
           routerLink:null,
         },
         {
-          label:"Submenu 3-2",
+          label:"Aplicaciones y módulos",
           icon:null,
           action:null,
-          items:null,
+          items:[
+            {
+              label:"Mantenimiento de aplicaciones",
+              icon:null,
+              action:null,
+              items:null,
+              routerLink:null,
+            }
+          ],
           routerLink:null
         },
       ]

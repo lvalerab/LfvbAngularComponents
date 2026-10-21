@@ -1,106 +1,139 @@
-<div class="tree-menu-container">
-    @if(headerMenuLfvb) {
-        <div class="tree-menu-header">
-            <ng-container [ngTemplateOutlet]="headerMenuLfvb">
-            
-            </ng-container>
-        </div>
-    }
+
     @if(tipoVisualizacion=="zorro") {
         <!--Dibujamos el menu con ng zorro-->
-            <ul nz-menu nzMode="horizontal">
-                @for(item of menus();track item.label) {
-                    @if(item.items!=null && item.items.length>0) {
-                        <li nz-submenu [nzTitle]="item.label" [nzIcon]="item.icon">
-                            <lfvbMenu [menus]="item.items" [nivel]="nivel+'_'" [zIndex]="zIndex+1"></lfvbMenu>
-                        </li>
+            <div>
+                <div class="tree-menu-header">
+                    <ng-container [ngTemplateOutlet]="headerMenuLfvb">
+                    
+                    </ng-container>
+                </div>
+                <ul nz-menu nzMode="horizontal">
+                    @for(item of menus();track item.label) {
+                        @if(item.items!=null && item.items.length>0) {
+                            <li nz-submenu [nzTitle]="item.label" [nzIcon]="item.icon">
+                                <lfvbMenu [menus]="item.items" [nivel]="nivel+'_'" [zIndex]="zIndex+1"></lfvbMenu>
+                            </li>
+                        }
+                        @else if(item.routerLink) {
+                            <!--<li nz-menu-item [routerLink]="item.routerLink">-->
+                            <li>
+                                <lfvbLabel [valor]="item.label" [icon]="item.icon"></lfvbLabel>
+                            </li>
+                        }
+                        @else if(item.action) {
+                            <li nz-menu-item (click)="ejecutarAccion($event,item)">
+                                <lfvbLabel [valor]="item.label" [icon]="item.icon"></lfvbLabel>
+                            </li>
+                        }
+                        @else {
+                            <li nz-menu-item>
+                                <lfvbLabel [valor]="item.label" [icon]="item.icon"></lfvbLabel>
+                            </li>
+                        }
                     }
-                    @else if(item.routerLink) {
-                        <!--<li nz-menu-item [routerLink]="item.routerLink">-->
-                        <li>
-                            <lfvbLabel [valor]="item.label" [icon]="item.icon"></lfvbLabel>
-                        </li>
-                    }
-                    @else if(item.action) {
-                        <li nz-menu-item (click)="ejecutarAccion($event,item)">
-                            <lfvbLabel [valor]="item.label" [icon]="item.icon"></lfvbLabel>
-                        </li>
-                    }
-                    @else {
-                        <li nz-menu-item>
-                            <lfvbLabel [valor]="item.label" [icon]="item.icon"></lfvbLabel>
-                        </li>
-                    }
-                }
-            </ul>    
+                </ul> 
+                @if(identMenuLfvb) {            
+                    <div class="tree-menu-ident">
+                        <ng-container [ngTemplateOutlet]="identMenuLfvb">
+
+                        </ng-container>            
+                    </div>
+                }   
+            </div>   
     }
     @else if(tipoVisualizacion=="angular-material") {
-        <!--Dibujamos el menu con angular material-->  
-        @for(item of menus();track item.label) {
-            @if(item.items!=null && item.items.length>0) {
-                <button matIconButton [matMenuTriggerFor]="appMenu">
-                    <lfvbLabel [valor]="item.label" [icon]="item.icon"></lfvbLabel>
-                </button>
-                <mat-menu #appMenu>
-                    <ng-template matMenuContent>
-                        <lfvbMenu [menus]="item.items" [nivel]="nivel+'_'" [zIndex]="zIndex+1"></lfvbMenu>
-                    </ng-template>
-                </mat-menu>
+        <div class="tree-menu-container">
+            @if(headerMenuLfvb) {
+                <div class="tree-menu-header">
+                    <ng-container [ngTemplateOutlet]="headerMenuLfvb">
+                    
+                    </ng-container>
+                </div>
             }
-            @else if(item.routerLink) {
-                <button matIconButton>
-                    <lfvbLabel [valor]="item.label" [icon]="item.icon"></lfvbLabel>
-                </button>
-            }
-            @else if(item.action) {
-                <button matIconButton>
-                    <lfvbLabel [valor]="item.label" [icon]="item.icon"></lfvbLabel>
-                </button>
-            }
-            @else {
-                <button matIconButton>
-                    <lfvbLabel [valor]="item.label" [icon]="item.icon"></lfvbLabel>
-                </button>
-            }
-        }
-        
-    }
-    @else {
-    <ul class="tree-menu" [style.z-index]="zIndex">            
-            @for(item of menus();track item.label) {
-                <li class="tree-menu-item" [ariaLevel]="nivel()" [style.z-index]="zIndex+1">
-                    @if(item.items!=null && item.items.length>0) {   
-                        <span class="tree-menu-item-link">                        
+            <div class="tree-menu-opciones-material" style="display:inline-flex;flex-direction: row;">
+                <!--Dibujamos el menu con angular material-->  
+                @for(item of menus();track $index) {
+                    @if(item.items!=null && item.items.length>0) {
+                        <button matIconButton [matMenuTriggerFor]="appMenu">
                             <lfvbLabel [valor]="item.label" [icon]="item.icon"></lfvbLabel>
-                            <span class="tree-menu-item-arrow"> &gt;</span>                        
-                        </span>
-                        <lfvbMenu [menus]="item.items" [nivel]="nivel+'_'" class="tree-menu-submenu" [zIndex]="zIndex+1"></lfvbMenu>
+                        </button>
+                        <mat-menu #appMenu>
+                            <ng-template matMenuContent>
+                                <lfvbMenu [menus]="item.items" [nivel]="nivel+'_'"></lfvbMenu>
+                            </ng-template>
+                        </mat-menu>
                     }
                     @else if(item.routerLink) {
-                        <!--<a [routerLink]="item.routerLink">-->
-                        <a class="tree-menu-item-link">
+                        <button matIconButton>
                             <lfvbLabel [valor]="item.label" [icon]="item.icon"></lfvbLabel>
-                        </a>
+                        </button>
                     }
                     @else if(item.action) {
-                        <a class="tree-menu-item-link" (click)="ejecutarAccion($event,item)">
+                        <button matIconButton>
                             <lfvbLabel [valor]="item.label" [icon]="item.icon"></lfvbLabel>
-                        </a>
+                        </button>
                     }
                     @else {
-                        <span class="tree-menu-item-link">
+                        <button matIconButton>
                             <lfvbLabel [valor]="item.label" [icon]="item.icon"></lfvbLabel>
-                        </span>
+                        </button>
                     }
-                </li>
-            }         
-    </ul>
-    }
-    @if(identMenuLfvb) {            
-        <div class="tree-menu-ident">
-            <ng-container [ngTemplateOutlet]="identMenuLfvb">
+                }
+            </div>
+             @if(identMenuLfvb) {            
+                <div class="tree-menu-ident">
+                    <ng-container [ngTemplateOutlet]="identMenuLfvb">
 
-            </ng-container>            
+                    </ng-container>            
+                </div>
+            }   
         </div>
-    }   
-</div>
+    }
+    @else {
+        <div class="tree-menu-container">
+            @if(headerMenuLfvb) {
+                <div class="tree-menu-header">
+                    <ng-container [ngTemplateOutlet]="headerMenuLfvb">
+                    
+                    </ng-container>
+                </div>
+            }
+            <ul class="tree-menu" [style.z-index]="zIndex">            
+                    @for(item of menus();track $index) {
+                        <li class="tree-menu-item" [ariaLevel]="nivel()" [style.z-index]="zIndex+((menus()?.length??0)-$index)">
+                            @if(item.items!=null && item.items.length>0) {   
+                                <span class="tree-menu-item-link">                        
+                                    <lfvbLabel [valor]="item.label" [icon]="item.icon"></lfvbLabel>
+                                    <span class="tree-menu-item-arrow"> &gt;</span>                        
+                                </span>
+                                <lfvbMenu [menus]="item.items" [nivel]="nivel()+'_'+$index" class="tree-menu-submenu" [zIndex]="zIndex+((menus()?.length??0)-$index)*100"></lfvbMenu>
+                            }
+                            @else if(item.routerLink) {
+                                <!--<a [routerLink]="item.routerLink">-->
+                                <a class="tree-menu-item-link">
+                                    <lfvbLabel [valor]="item.label" [icon]="item.icon"></lfvbLabel>
+                                </a>
+                            }
+                            @else if(item.action) {
+                                <a class="tree-menu-item-link" (click)="ejecutarAccion($event,item)">
+                                    <lfvbLabel [valor]="item.label" [icon]="item.icon"></lfvbLabel>
+                                </a>
+                            }
+                            @else {
+                                <span class="tree-menu-item-link">
+                                    <lfvbLabel [valor]="item.label" [icon]="item.icon"></lfvbLabel>
+                                </span>
+                            }
+                        </li>
+                    }         
+            </ul>
+            @if(identMenuLfvb) {            
+                <div class="tree-menu-ident">
+                    <ng-container [ngTemplateOutlet]="identMenuLfvb">
+
+                    </ng-container>            
+                </div>
+            }   
+        </div>        
+    }
+    

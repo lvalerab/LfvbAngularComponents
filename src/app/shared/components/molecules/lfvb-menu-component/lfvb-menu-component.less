@@ -1,7 +1,7 @@
 .tree-menu-container {
     display: flex;
-    margin: 0.5rem;
     flex-direction: row;
+    margin: 0.5rem;
     box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
     border: 1px solid #e5e7eb;
     border-top-left-radius: 5px;
@@ -17,7 +17,9 @@
 
 .tree-menu-ident {
     padding-left: 45%;
+    text-align: right;
 }
+
 
 
 .tree-menu {
@@ -27,31 +29,35 @@
     margin-top: 0.5rem;
     display: flex;
     flex-direction: row;
-    gap:4px;
-    
-    min-width: 10%;    
+    gap:6px;    
+    min-width: 10%;           
 }
 
 .tree-menu-item {
-    position: relative;
-    background-color: linear-gradient(45deg;white;blue);
+    position: relative;    
+    border-radius: 0.5rem;
+    cursor: pointer;    
 }
 
 .tree-menu-item-link {
-    display: flex;
+    clear: both;
+    display: inline-flex;
+    white-space: nowrap;
+    flex-direction: row;
     align-items: center;
     gap: 16px;
     padding: 8px 12px;
-    background-color: #f3f4f6;
+    background-color: #f7f7f8;
     color:#333;
     text-decoration: none;
     border-radius: 4px;
     transition: background-color 0.2s ease;
+    
 }
 
 .tree-menu-item-link:hover {
     background-color: #f3f4f6;
-    color: #2563eb;
+    color: #2563eb;    
 }
 
 .tree-menu-item-arrow {
@@ -67,7 +73,8 @@
     position: absolute;    
     top:16px;    
     //left: 100%;
-    //margin-left: 4px;    
+    //margin-left: 4px; 
+    cursor: pointer;   
 }
 
 .tree-menu-item:hover > .tree-menu-submenu {
@@ -76,6 +83,7 @@
     padding-left: 16px;
     margin-top: 2px;
     animation: fadeIn 0.2s ease-in-out;
+    cursor: pointer;
 }
 
 @keyframes fadeIn {

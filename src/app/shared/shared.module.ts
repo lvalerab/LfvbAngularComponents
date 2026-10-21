@@ -15,6 +15,7 @@ import { LfvbFormComponent } from './components/molecules/lfvb-form-component/lf
 import { LfvbFormItemComponent } from './components/molecules/lfvb-form-component/atoms/lfvb-form-item-component/lfvb-form-item-component';
 import { LfvbMenuItemComponent } from './components/molecules/lfvb-menu-component/atoms/lfvb-menu-item-component/lfvb-menu-item-component';
 import { LfvbMenuComponent } from './components/molecules/lfvb-menu-component/lfvb-menu-component';
+import { LfvbModalComponent } from './components/atoms/lfvb-modal-component/lfvb-modal-component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { LfvbMenuComponent } from './components/molecules/lfvb-menu-component/lf
     LfvbFormComponent,
     LfvbFormItemComponent,
     LfvbMenuItemComponent,
-    LfvbMenuComponent
+    LfvbMenuComponent,
+    LfvbModalComponent
   ],
   exports:[
     LfvbAvatarComponent,
@@ -50,7 +52,8 @@ import { LfvbMenuComponent } from './components/molecules/lfvb-menu-component/lf
     LfvbFormComponent,
     LfvbFormItemComponent,
     LfvbMenuItemComponent,
-    LfvbMenuComponent
+    LfvbMenuComponent,
+    LfvbModalComponent
   ]
 })
 export class SharedModule { }

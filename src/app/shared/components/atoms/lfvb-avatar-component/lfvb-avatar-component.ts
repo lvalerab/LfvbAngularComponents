@@ -38,7 +38,7 @@ export class LfvbAvatarComponent {
   tamanyo:TamanyoAvatar=TamanyoAvatar.x32;
 
   @Input()
-  tipoAvatar:TipoFiguraAvatar=TipoFiguraAvatar.cuadrado;
+  tipoAvatar:TipoFiguraAvatar=TipoFiguraAvatar.redondo;
 
   ///////////////////////////////////////////////////
   //Emisores
