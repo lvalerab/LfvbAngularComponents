@@ -1,0 +1,1 @@
+export type LfvbModalType='success'|'error'|'info'|'warning'|'default';

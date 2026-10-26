@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { groupSelectEntity } from './data/mocks/select/optionSelectEntity';
 import { AppRoutingModule } from './app.routes';
 import { MenuItemModel } from './shared/components/molecules/lfvb-menu-component/models/MenuItemModel';
+import { LfvbToastService } from './shared/components/organisms/lfvb-toast-component/services/lfvb-toast-service';
+import { LfvbToastType } from './shared/components/organisms/lfvb-toast-component/models/lfvb-toast-model';
 
 
 
@@ -22,6 +24,10 @@ import { MenuItemModel } from './shared/components/molecules/lfvb-menu-component
 })
 export class App {
   protected readonly title = signal('frontend');
+
+  constructor(public tstServ:LfvbToastService) {
+
+  }
 
   texto:string="Hola caracola";
 
@@ -44,6 +50,10 @@ export class App {
 
   onCloseModal(data:any) {    
     this.abrirModal=false;
+  }
+
+  FunctionMostarToast(mensaje:string, titulo:string='', tipo:LfvbToastType='info',duracion:number=4000,img:string='',clsImg:string='') {
+      this.tstServ.show(mensaje,titulo,tipo,duracion,img,clsImg);
   }
 
   selectValores:groupSelectEntity[]=[

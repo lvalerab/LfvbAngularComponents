@@ -2,7 +2,7 @@ import { Component, ContentChildren, EventEmitter, Input, Output, QueryList, mod
 import { environment } from '@environments/environment';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import {MatTabsModule} from '@angular/material/tabs';
-import { NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet, NgClass } from '@angular/common';
 import { LfvbTabComponent } from './atoms/lfvb-tab-component/lfvb-tab-component';
 
 @Component({
@@ -10,7 +10,8 @@ import { LfvbTabComponent } from './atoms/lfvb-tab-component/lfvb-tab-component'
   imports: [
     NgTemplateOutlet,
     NzTabsModule,
-    MatTabsModule
+    MatTabsModule,
+    NgClass
 ],
   templateUrl: './lfvb-tabs-component.html',
   styleUrl: './lfvb-tabs-component.less',
@@ -26,6 +27,8 @@ export class LfvbTabsComponent {
 
   @Input()
   selectedTabId:any=null;
+
+
 
   @Output()
   onSelectedTab=new EventEmitter<any>();

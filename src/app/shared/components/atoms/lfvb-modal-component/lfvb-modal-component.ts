@@ -2,7 +2,8 @@ import { Component, ElementRef, EventEmitter, Input, Output, ViewChild, model, T
 import { environment } from '@environments/environment';
 import { LfvbButtonComponent } from '../lfvb-button-component/lfvb-button-component';
 import { NzModalModule } from 'ng-zorro-antd/modal';
-import { NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet, NgClass } from '@angular/common';
+import { LfvbModalType } from './enum/lfvb-modal-types';
 
 
 
@@ -11,8 +12,9 @@ import { NgTemplateOutlet } from '@angular/common';
   imports: [
     LfvbButtonComponent,
     NzModalModule,
-    NgTemplateOutlet
-  ],
+    NgTemplateOutlet,
+    NgClass
+],
   templateUrl: './lfvb-modal-component.html',
   styleUrl: './lfvb-modal-component.less',
 })
@@ -31,14 +33,8 @@ export class LfvbModalComponent {
   modalData=model(null);
 
   @Input()
-  isWarm:boolean=false;
-
-  @Input()
-  isError:boolean=false;
-
-  @Input()
-  isSuccess:boolean=false;
-
+  tipo:LfvbModalType='default';
+ 
   @Input()
   ancho:string="500px";
 
@@ -68,16 +64,7 @@ export class LfvbModalComponent {
 
   ngOnChanges() {
     //debugger;
-    this.clsCabecera="modal-header "
-    if(this.isWarm) {
-      this.clsCabecera+="modal-header-warm";
-    }
-    if(this.isError) {
-      this.clsCabecera+="modal-header-err";
-    }
-    if(this.isSuccess) {
-      this.clsCabecera+="modal-header-success";
-    }
+    this.clsCabecera="modal-header "   
     if(this.modalDialog) {
       if(this.isOpen() && !this.modalDialog.nativeElement.open) {
         this.modalDialog.nativeElement.showModal();

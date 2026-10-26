@@ -1,3 +1,6 @@
+@import '../../../../../colors.less';
+
+
 .lfvb-tab-component {
     box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
     margin:1rem 0.5rem 1rem 0.5rem;
@@ -20,6 +23,49 @@
     padding: 0 2rem 0 2rem;
     margin: 0 0.1rem 0 0;      
 }
+
+.lfvb-tab-component-tab.success { 
+    background-color: @var-background-success;
+    color: @var-text-success; 
+}
+.lfvb-tab-component-tab.error { 
+   background-color: @var-background-error; 
+   color: @var-text-error;
+}
+.lfvb-tab-component-tab.warning { 
+   background-color: @var-background-warning; 
+   color: @var-text-warning;
+}
+.lfvb-tab-component-tab.info { 
+  background-color: @var-background-info; 
+  color: @var-text-info;
+}
+.lfvb-tab-component-tab.default { 
+    background-color: @var-background-default; 
+    color: @var-text-default;
+}
+
+.lfvb-tab-component-tab.success_seleccionado { 
+    background-color:@var-background-success-fuerte; 
+    color: @var-text-success-fuerte;
+}
+.lfvb-tab-component-tab.error_seleccionado { 
+    background-color: @var-background-error-fuerte; 
+    color: @var-text-error-fuerte;
+}
+.lfvb-tab-component-tab.warning_seleccionado { 
+    background-color: @var-background-warning-fuerte; 
+    color: @var-text-warning-fuerte;
+}
+.lfvb-tab-component-tab.info_seleccionado { 
+    background-color: @var-background-info-fuerte;
+    color: @var-text-info-fuerte; 
+}
+.lfvb-tab-component-tab.default_seleccionado { 
+    background-color: @var-background-default-fuerte;
+    color: @var-text-default-fuerte;  
+}
+
 
 .lfvb-tab-component-tab-container {
     padding: 1rem 1rem 1rem 1rem;

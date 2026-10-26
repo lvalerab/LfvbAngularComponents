@@ -1,0 +1,21 @@
+<div class="lfvb-toast-container">
+    @for(msg of tstService.mensages(); track msg.id) {
+        <div class="lfvb-toast-item" [ngClass]="msg.type">
+            <button class="lfvb-toast-close" (click)="tstService.remove(msg.id)"  [ngClass]="msg.type">×</button>
+            @if(msg.clsImg || msg.img) {                
+                <div class="lfvb-toast-imagen">
+                    @if(msg.clsImg) {
+                        <span [ngClass]="msg.clsImg"></span>
+                    }   
+                    @else if(msg.img) {
+                        <img [src]="msg.img"/>
+                    }
+                </div>
+            }
+            @if(msg.titulo) {
+                <h1 class="lfvb-toat-menssage-title">{{msg.titulo}}</h1>
+            }
+            <div class="lfvb-toast-message" [ngClass]="msg.type">{{msg.message}}</div>
+        </div>
+    }
+</div>

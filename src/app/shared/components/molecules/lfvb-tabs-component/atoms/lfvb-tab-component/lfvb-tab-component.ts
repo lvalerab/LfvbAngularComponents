@@ -2,7 +2,7 @@ import { Component, ContentChild, Input, Output, TemplateRef, model } from '@ang
 import { environment } from '@environments/environment';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import {MatTabsModule} from '@angular/material/tabs';
-
+import { LfvbTabType } from '../../enums/lfvb-tabs-type-enum';
 
 
 @Component({
@@ -31,6 +31,9 @@ export class LfvbTabComponent {
 
   @Input()
   active:boolean=false;
+
+  @Input()
+  tipo:LfvbTabType='default';
 
   //Logica de uso del template
   @ContentChild('tituloTabTemplate',{read:TemplateRef}) headerTemplate!:TemplateRef<any>;

@@ -27,7 +27,7 @@
 }
 @else if(tipoVisualizacion=='HTML' || tipoVisualizacion=='angular-material') {
     <dialog #modalDialog (click)="onBackdropClick($event)" (close)="onClose(null)" [style.max-width]="ancho">
-        <div class="modal-header" [className]="clsCabecera">
+        <div class="modal-header" class="modal-header" [ngClass]="tipo">
             @if(!headerModalTemplate) {
                 <h2>{{ title }}</h2>
                 <button class="close-btn" (click)="onClose(null)">×</button>

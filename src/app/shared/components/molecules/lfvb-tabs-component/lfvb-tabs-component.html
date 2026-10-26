@@ -38,7 +38,7 @@
     <div class="lfvb-tab-component">
         <div class="lfvb-tab-component-tabs">
             @for(tab of tabs; track $index) {
-                <div (click)="selectTab(tab)" class="lfvb-tab-component-tab" [style.background-color]="selectedTab?.tabId==tab.tabId?'#00000055':'#FFFFFF'">
+                <div (click)="selectTab(tab)" class="lfvb-tab-component-tab" [ngClass]="tab.tipo+(selectedTab?.tabId==tab.tabId?'_seleccionado':'')">
                     @if(tab.headerTemplate) {
                         <ng-container [ngTemplateOutlet]="tab.headerTemplate"></ng-container>
                     }

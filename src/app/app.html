@@ -7,7 +7,7 @@
             <lfvbAvatar [(texto)]="texto"></lfvbAvatar>        
     </ng-template>
 </lfvbMenu>
-<lfvbModal [title]="'Titulo del modal'" [(isOpen)]="abrirModal" [isError]="esError" [isWarm]="esWarm" [isSuccess]="esOk" [ancho]="'60rem'">
+<lfvbModal [title]="'Titulo del modal'" [(isOpen)]="abrirModal" [tipo]="esError?'error':(esOk?'success':(esWarm?'warning':'default'))" [ancho]="'60rem'">
     <!--<ng-template #headerModalTemplate>
         <h1>Titulo del modal</h1>
     </ng-template>-->
@@ -48,7 +48,7 @@
     </ng-template>
 </lfvbModal>
 <lfvbTabs>
-    <lfvbTab label="Tab1" tabId="1">
+    <lfvbTab label="Tab1" tabId="1" tipo="default">
         <ng-template #tituloTabTemplate>
             <b>Elementos básicos de formulario</b>
         </ng-template>
@@ -73,25 +73,7 @@
             </lfvbForm>
         </ng-template>
     </lfvbTab>
-    <lfvbTab label="Modales" tabId="4">
-        <ng-template #tituloTabTemplate>
-            <b>Tipos de modales y mensajes</b>
-        </ng-template>
-        <ng-template #tabContainer>
-            <lfvbForm>
-                <lfvbFormItem [inline]="true" width="50%">
-                    <ng-template #itemTemplate>
-                        <lfvbLabel [valor]="'Pinche para ver el modal'"></lfvbLabel><br/>
-                        <lfvbButton [label]="'Error'" nzTipo="primary" nzForma="round" nzTamanyo="small" (onClic)="FuncionAbrirModal(true,false,false)"></lfvbButton><br/>
-                        <lfvbButton [label]="'Warning'" nzTipo="primary" nzForma="round" nzTamanyo="small" (onClic)="FuncionAbrirModal(false,true,false)"></lfvbButton><br/>
-                        <lfvbButton [label]="'Success'" nzTipo="primary" nzForma="round" nzTamanyo="small" (onClic)="FuncionAbrirModal(false,false,true)"></lfvbButton><br/>
-                        <lfvbButton [label]="'Normal'" nzTipo="primary" nzForma="round" nzTamanyo="small" (onClic)="FuncionAbrirModal(false,false,false)"></lfvbButton><br/>
-                    </ng-template>
-                </lfvbFormItem>
-            </lfvbForm>
-        </ng-template>
-    </lfvbTab>
-    <lfvbTab label="Cards" tabId="2">
+    <lfvbTab label="Cards" tabId="2" tipo="error">
         <ng-template #tabContainer>
             <lfvbCard [width]="'250px'" [inline]="true">
                 <ng-template #headerCardTemplate>
@@ -122,7 +104,7 @@
             </lfvbCard>
         </ng-template>
     </lfvbTab>
-    <lfvbTab label="Contenido con tabla" tabId="3">
+    <lfvbTab label="Contenido con tabla" tabId="3" tipo="info">
         <ng-template #tabContainer>
             <lfvbTable [(dataSource)]="dataSource" [definitionColumns]="[
                 {'nombreColumna':'Id','valorColumna':'Id'},
@@ -142,5 +124,39 @@
             </lfvbTable>            
         </ng-template>
     </lfvbTab>
+    <lfvbTab label="Modales" tabId="4" tipo="success">
+        <ng-template #tituloTabTemplate>
+            <b>Tipos de modales y mensajes</b>
+        </ng-template>
+        <ng-template #tabContainer>
+            <lfvbForm>
+                <lfvbFormItem [inline]="true" width="50%">
+                    <ng-template #itemTemplate>
+                        <lfvbLabel [valor]="'Pinche para ver el modal'"></lfvbLabel><br/>
+                        <lfvbButton [label]="'Error'" nzTipo="primary" nzForma="round" nzTamanyo="small" (onClic)="FuncionAbrirModal(true,false,false)"></lfvbButton><br/>
+                        <lfvbButton [label]="'Warning'" nzTipo="primary" nzForma="round" nzTamanyo="small" (onClic)="FuncionAbrirModal(false,true,false)"></lfvbButton><br/>
+                        <lfvbButton [label]="'Success'" nzTipo="primary" nzForma="round" nzTamanyo="small" (onClic)="FuncionAbrirModal(false,false,true)"></lfvbButton><br/>
+                        <lfvbButton [label]="'Normal'" nzTipo="primary" nzForma="round" nzTamanyo="small" (onClic)="FuncionAbrirModal(false,false,false)"></lfvbButton><br/>
+                    </ng-template>
+                </lfvbFormItem>
+            </lfvbForm>
+        </ng-template>
+    </lfvbTab>
+    <lfvbTab label="Mensajes toast" tabId="5" tipo="warning">
+        <ng-template #tabContainer>
+            <lfvbForm>
+                <lfvbFormItem [inline]="true" width="50%">
+                    <ng-template #itemTemplate>
+                        <lfvbLabel [valor]="'Pinche para ver el toast'"></lfvbLabel><br/>
+                        <lfvbButton [label]="'Normal'" nzTipo="primary" nzForma="round" nzTamanyo="small" (onClic)="FunctionMostarToast('Mensaje de info','Info toast','info',4000,'','\F3E5')"></lfvbButton><br/>
+                        <lfvbButton [label]="'Success'" nzTipo="primary" nzForma="round" nzTamanyo="small" (onClic)="FunctionMostarToast('Mensaje de ok','Ok toast','success')"></lfvbButton><br/>
+                        <lfvbButton [label]="'Warning'" nzTipo="primary" nzForma="round" nzTamanyo="small" (onClic)="FunctionMostarToast('Mensaje de advertencia','Warning toast','warning')"></lfvbButton><br/>
+                        <lfvbButton [label]="'Error'" nzTipo="primary" nzForma="round" nzTamanyo="small" (onClic)="FunctionMostarToast('Mensaje de error','Error toast','error')"></lfvbButton><br/>
+                    </ng-template>
+                </lfvbFormItem>
+            </lfvbForm>
+        </ng-template>
+    </lfvbTab>
 </lfvbTabs>
 <br>
+<LfvbToastContainer></LfvbToastContainer>
