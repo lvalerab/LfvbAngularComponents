@@ -1,0 +1,93 @@
+@import '../../../../../colors.less';
+
+dialog {
+  border: none;
+  border-radius: 8px;
+  padding: 0;
+  width: 100%;
+  //max-width: 500px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+/* Fondo oscuro nativo */
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.dialog-header.success { 
+    background-color:@var-background-success-fuerte; 
+    color: @var-text-success-fuerte;
+}
+.dialog-header.error { 
+    background-color: @var-background-error-fuerte; 
+    color: @var-text-error-fuerte;
+}
+.dialog-header.warning { 
+    background-color: @var-background-warning-fuerte; 
+    color: @var-text-warning-fuerte;
+}
+.dialog-header.info { 
+    background-color: @var-background-info-fuerte;
+    color: @var-text-info-fuerte; 
+}
+.dialog-header.default { 
+    background-color: @var-background-default-fuerte;
+    color: @var-text-default-fuerte;  
+}
+
+.dialog-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.close-btn {
+  position:relative;
+  top:10px;
+  left: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.maximize-btn {
+  position:relative;
+  top:10px;
+  left: 20px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.minimize-btn {
+  position:relative;
+  top:10px;
+  left: 30px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.dialog-body {
+  padding: 1.5rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

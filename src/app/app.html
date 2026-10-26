@@ -7,7 +7,7 @@
             <lfvbAvatar [(texto)]="texto"></lfvbAvatar>        
     </ng-template>
 </lfvbMenu>
-<lfvbModal [title]="'Titulo del modal'" [(isOpen)]="abrirModal" [tipo]="esError?'error':(esOk?'success':(esWarm?'warning':'default'))" [ancho]="'60rem'">
+<lfvbModal [title]="'Titulo del modal'" [(isOpen)]="abrirModal" [tipo]="esError?'error':(esOk?'success':(esWarm?'warning':'default'))" [centrar]="true" [ancho]="'800px'" [alto]="'500px'">
     <!--<ng-template #headerModalTemplate>
         <h1>Titulo del modal</h1>
     </ng-template>-->
@@ -158,5 +158,6 @@
         </ng-template>
     </lfvbTab>
 </lfvbTabs>
+
 <br>
 <LfvbToastContainer></LfvbToastContainer>
