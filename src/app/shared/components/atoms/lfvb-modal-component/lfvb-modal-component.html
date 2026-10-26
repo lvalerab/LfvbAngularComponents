@@ -1,0 +1,60 @@
+@if(tipoVisualizacion=='zorro') {
+    <nz-modal [(nzVisible)]="isOpen" [nzTitle]="title" [nzContent]="modalContent" [nzFooter]="modalFooter" (nzOnCancel)="onClose(null)" (nzOnOk)="onClose({ok:true})" (nzOnCancel)="{ok:false}">
+        @if(headerModalTemplate) {
+            <<ng-template #modalTitle>
+                <ng-container [ngTemplateOutlet]="headerModalTemplate">
+
+                </ng-container>
+            </ng-template>
+        }
+        <ng-template #modalContent>
+             <ng-container [ngTemplateOutlet]="contentModalTemplate">
+
+            </ng-container>
+        </ng-template>
+        <ng-template #modalFooter>
+            @if(footerModalTemplate) {            
+                <ng-container [ngTemplateOutlet]="footerModalTemplate">
+
+                </ng-container>
+            }
+            @else {
+                <lfvbButton (click)="onClose(null)" label="Cerrar"></lfvbButton>
+                
+            }
+        </ng-template>
+    </nz-modal>
+}
+@else if(tipoVisualizacion=='HTML' || tipoVisualizacion=='angular-material') {
+    <dialog #modalDialog (click)="onBackdropClick($event)" (close)="onClose(null)" [style.max-width]="ancho">
+        <div class="modal-header" class="modal-header" [ngClass]="tipo">
+            @if(!headerModalTemplate) {
+                <h2>{{ title }}</h2>
+                <button class="close-btn" (click)="onClose(null)">×</button>
+            }
+            @else {
+                <ng-container [ngTemplateOutlet]="headerModalTemplate">
+
+                </ng-container>
+            }
+        </div>
+        
+        <div class="modal-body">
+            <!-- Contenido proyectado dinámicamente -->
+            <ng-container [ngTemplateOutlet]="contentModalTemplate">
+
+            </ng-container>
+        </div>
+
+        <div class="modal-footer">
+            @if(footerModalTemplate) {
+                <ng-container [ngTemplateOutlet]="footerModalTemplate">
+
+                </ng-container>
+            }
+            @else {
+                <lfvbButton (click)="onClose(null)" label="Cerrar"></lfvbButton>
+            }
+        </div>
+    </dialog>
+}

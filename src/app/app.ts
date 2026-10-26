@@ -2,9 +2,13 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 import { FormsModule } from '@angular/forms';
-import { optionSelectEntity, groupSelectEntity } from './data/mocks/select/optionSelectEntity';
+import { groupSelectEntity } from './data/mocks/select/optionSelectEntity';
 import { AppRoutingModule } from './app.routes';
-import { LfvbAvatarComponent } from './shared/components/atoms/lfvb-avatar-component/lfvb-avatar-component';
+import { MenuItemModel } from './shared/components/molecules/lfvb-menu-component/models/MenuItemModel';
+import { LfvbToastService } from './shared/components/organisms/lfvb-toast-component/services/lfvb-toast-service';
+import { LfvbToastType } from './shared/components/organisms/lfvb-toast-component/models/lfvb-toast-model';
+
+
 
 
 
@@ -13,8 +17,7 @@ import { LfvbAvatarComponent } from './shared/components/atoms/lfvb-avatar-compo
   imports: [
     RouterOutlet,
     FormsModule,
-    SharedModule,
-    LfvbAvatarComponent
+    SharedModule
 ],
   templateUrl: './app.html',
   styleUrl: './app.less'
@@ -22,7 +25,36 @@ import { LfvbAvatarComponent } from './shared/components/atoms/lfvb-avatar-compo
 export class App {
   protected readonly title = signal('frontend');
 
+  constructor(public tstServ:LfvbToastService) {
+
+  }
+
   texto:string="Hola caracola";
+
+  abrirModal:boolean=false;
+  abrirModal2:boolean=false;
+  esError:boolean=false;
+  esWarm:boolean=false;
+  esOk:boolean=false;
+
+  FuncionAbrirModal(esError:boolean, esWarm:boolean, esOk:boolean) {
+    this.esError=esError;
+    this.esWarm=esWarm;
+    this.esOk=esOk;
+    this.abrirModal=true;
+  }
+
+  FuncionAbrirModal2(esError:boolean, esWarm:boolean, esOk:boolean) {    
+    this.abrirModal2=true;
+  }
+
+  onCloseModal(data:any) {    
+    this.abrirModal=false;
+  }
+
+  FunctionMostarToast(mensaje:string, titulo:string='', tipo:LfvbToastType='info',duracion:number=4000,img:string='',clsImg:string='') {
+      this.tstServ.show(mensaje,titulo,tipo,duracion,img,clsImg);
+  }
 
   selectValores:groupSelectEntity[]=[
     {
@@ -76,4 +108,147 @@ export class App {
     {Id:3,Nombre:"Valor fila 3",Descripcion:"Esto es un valor de una fila Z"},
     {Id:4,Nombre:"Valor fila 4",Descripcion:"Esto es un valor de una fila Y"},
   ]
+
+  menu:MenuItemModel[]=[
+    {
+      label:'Stock',
+      icon:null,
+      action:null,      
+      routerLink:null,
+      items:[
+        {
+          label:"Almacenes",
+          icon:null,
+          action:null,
+          items:[
+            {
+              label:'Nuevo almacen',
+              icon:null,
+              action:null,      
+              routerLink:null,
+              items:null
+            },
+            {
+              label:'Gestión almacen',
+              icon:null,
+              action:null,      
+              routerLink:null,
+              items:null
+            },
+          ],
+          routerLink:null
+        },
+        {
+          label:"Pedidos",
+          icon:null,
+          action:null,
+          items:null,
+          routerLink:null
+        },
+        {
+          label:"Proveedores",
+          icon:null,
+          action:null,
+          items:null,
+          routerLink:null
+        },
+      ]
+    },
+    {
+      label:'Facturación',
+      icon:null,
+      action:null,
+      items:null,
+      routerLink:null
+    },    
+    {
+      label:"ERP",
+      icon:null,
+      action:null,
+      items:[
+        {
+          label:"Gestión de personas",
+          icon:null,
+          action:null,
+          items:null,
+          routerLink:null,
+        }, 
+        {
+          label:"Comunicaciones",
+          icon:null,
+          action:null,
+          items:null,
+          routerLink:null,
+        },
+        {
+          label:"Peticiones",
+          icon:null,
+          action:null,
+          items:null,
+          routerLink:null,
+        },
+      ],
+      routerLink:null,
+    },
+    {
+      label:'Configuración',
+      icon:null,
+      action:null,
+      routerLink:null,
+      items:[
+        {
+          label:"Textos e idiomas",
+          icon:null,
+          action:null,
+          items:[
+            {
+              label:"Composiciones",
+              icon:null,
+              action:null,
+              items:null,
+              routerLink:null,
+            }, 
+          ],
+          routerLink:null,
+        },
+        {
+          label:"Gestión de usuarios y grupos",
+          icon:null,
+          action:null,
+          items:[
+            {
+              label:"Usuarios",
+              icon:null,
+              action:null,
+              items:null,
+              routerLink:null,
+            }, 
+            {
+              label:"Grupos",
+              icon:null,
+              action:null,
+              items:null,
+              routerLink:null,
+            } 
+          ],
+          routerLink:null,
+        },
+        {
+          label:"Aplicaciones y módulos",
+          icon:null,
+          action:null,
+          items:[
+            {
+              label:"Mantenimiento de aplicaciones",
+              icon:null,
+              action:null,
+              items:null,
+              routerLink:null,
+            }
+          ],
+          routerLink:null
+        },
+      ]
+    }
+  ];
 }

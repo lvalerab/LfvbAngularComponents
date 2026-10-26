@@ -1,0 +1,1 @@
+export type LfvbTabType='success'|'error'|'info'|'warning'|'default';

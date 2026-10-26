@@ -35,19 +35,21 @@
 }
 @else {
     <!--Visualizacion en modo html-->
-    <div>
+    <div class="lfvb-tab-component">
+        <div class="lfvb-tab-component-tabs">
+            @for(tab of tabs; track $index) {
+                <div (click)="selectTab(tab)" class="lfvb-tab-component-tab" [ngClass]="tab.tipo+(selectedTab?.tabId==tab.tabId?'_seleccionado':'')">
+                    @if(tab.headerTemplate) {
+                        <ng-container [ngTemplateOutlet]="tab.headerTemplate"></ng-container>
+                    }
+                    @else {
+                        <label>{{tab.label}}</label>
+                    }
+                </div>
+            }
+        </div>        
         @for(tab of tabs; track $index) {
-            <div (click)="selectTab(tab)" style="display:inline;inline-size: auto; border-top-left-radius: 15%; border-color: black; border-width: 1px; border-style:solid; padding: 5px;" [style.background-color]="selectedTab?.tabId==tab.tabId?'#00000055':'#FFFFFF'">
-                @if(tab.headerTemplate) {
-                    <ng-container [ngTemplateOutlet]="tab.headerTemplate"></ng-container>
-                }
-                @else {
-                    <label>{{tab.label}}</label>
-                }
-            </div>
-        }        
-        @for(tab of tabs; track $index) {
-            <div [style.display]="selectedTab?.tabId==tab.tabId?'block':'none'">
+            <div [style.display]="selectedTab?.tabId==tab.tabId?'block':'none'" class="lfvb-tab-component-tab-container">
                 <ng-container [ngTemplateOutlet]="tab.tabContainer"></ng-container>
             </div>
         }

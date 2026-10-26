@@ -291,8 +291,8 @@ export const environment = {
     ,
     config:{
         sdkVisualizador:{
-            //tipo:'HTML'
-            tipo:'zorro'
+            tipo:'HTML'
+            //tipo:'zorro'
             //tipo:'angular-material'
         },
         login:{
