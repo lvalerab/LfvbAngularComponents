@@ -26,7 +26,7 @@
     </nz-modal>
 }
 @else if(tipoVisualizacion=='HTML' || tipoVisualizacion=='angular-material') {
-    <dialog #modalDialog (click)="onBackdropClick($event)" (close)="onClose(null)" [style.max-width]="ancho">
+    <dialog #modalDialog (click)="onBackdropClick($event)" (close)="onClose(null)" [style.max-width]="ancho()" [style.max-height]="alto()" [style.left]="x()" [style.top]="y()" [style.z-index]="zIndex()">
         <div class="modal-header" class="modal-header" [ngClass]="tipo">
             @if(!headerModalTemplate) {
                 <h2>{{ title }}</h2>

@@ -1,0 +1,42 @@
+@if(tipoVisualizacion=='zorro') {
+    <nz-modal [(nzVisible)]="isOpen" [nzTitle]="title" [nzContent]="modalContent" [nzFooter]="modalFooter" (nzOnCancel)="onClose(null)" (nzOnOk)="onClose({ok:true})" (nzOnCancel)="{ok:false}">
+        @if(headerTemplate) {
+            <<ng-template #modalTitle>
+                <ng-container [ngTemplateOutlet]="headerTemplate">
+
+                </ng-container>
+            </ng-template>
+        }
+        <ng-template #modalContent>
+             <ng-container [ngTemplateOutlet]="contentTemplate">
+
+            </ng-container>
+        </ng-template>
+        <ng-template #modalFooter>            
+        </ng-template>
+    </nz-modal>
+}
+@else if(tipoVisualizacion=='HTML' || tipoVisualizacion=='angular-material') {
+    <dialog #modalDialog (click)="onBackdropClick($event)" (close)="onClose(null)" [style.max-width]="ancho()" [style.max-height]="alto()" [style.left]="x()" [style.top]="y()" [style.z-index]="zIndex()">
+        <div class="dialog-header" [ngClass]="tipo">
+            @if(!headerTemplate) {
+                <h2>{{ title }}</h2>
+                <button class="minimize-btn" (click)="onMinimize()">×</button>
+                <button class="maximize-btn" (click)="onMaximize()">×</button>
+                <button class="close-btn" (click)="onClose(null)">×</button>
+            }
+            @else {
+                <ng-container [ngTemplateOutlet]="headerTemplate">
+
+                </ng-container>
+            }
+        </div>
+        
+        <div class="dialog-body">
+            <!-- Contenido proyectado dinámicamente -->
+            <ng-container [ngTemplateOutlet]="contentTemplate">
+
+            </ng-container>
+        </div>
+    </dialog>
+}

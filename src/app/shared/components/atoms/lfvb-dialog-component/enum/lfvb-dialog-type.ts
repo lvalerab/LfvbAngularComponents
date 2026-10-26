@@ -1,0 +1,1 @@
+export type LfvbDialogType='success'|'error'|'info'|'warning'|'default';
